@@ -4,7 +4,7 @@ add_song_URL = "https://github.com/theadamzaft/song-server-swagger/songs/add_son
 upvote_URL = "https://github.com/theadamzaft/song-server-swagger/songs/upvote"
 downvote_URL = "https://github.com/theadamzaft/song-server-swagger/songs/downvote"
 ranked_songs_URL = "https://github.com/theadamzaft/song-server-swagger/songs/ranked_songs"
-
+get_song_URL = "https://github.com/theadamzaft/song-server-swagger/songs/get_song"
 
 def buildSong(genre, year, performer, title):
     song = {"song_genre" : genre,
@@ -51,4 +51,11 @@ def getSongByRank(rank, op):
             "op" : op}
 
     answer = infrastructure.get(ranked_songs_URL, data)
+    return answer
+
+
+def getSong(songTitle):
+    data = {"song_title" : songTitle}
+    answer = infrastructure.get(get_song_URL, data)
+
     return answer
