@@ -1,9 +1,9 @@
 from infrastructure_layer import infrastructure
 
-add_user_URL = "https://github.com/theadamzaft/song-server-swagger/users/add_user"
-get_user_URL = "https://github.com/theadamzaft/song-server-swagger/users/get_user"
-add_friend_URL = "https://github.com/theadamzaft/song-server-swagger/users/add_friend"
-change_password_URL ="https://github.com/theadamzaft/song-server-swagger/users/change_password"
+add_user_URL = "http://127.0.0.1:3002/users/add_user"
+get_user_URL = "http://127.0.0.1:3002/users/get_user"
+add_friend_URL = "http://127.0.0.1:3002/users/add_friend"
+change_password_URL ="http://127.0.0.1:3002/users/change_password"
 
 def buildUser(name, password):
     user = {"user_name" : name,
@@ -34,7 +34,7 @@ def addFriend(userName, password, friendName):
             "user_password" : password,
             "friend_name" : friendName}
 
-    answer = infrastructure.get(add_friend_URL, data)
+    answer = infrastructure.put(add_friend_URL, data)
 
     return answer
 
@@ -47,3 +47,8 @@ def changePassword(userName, userPassword, userNewPassword):
     answer = infrastructure.put(change_password_URL, data)
 
     return answer
+
+
+defaultUser = {"user_name" : "yanay",
+               "user_password" : "123"}
+

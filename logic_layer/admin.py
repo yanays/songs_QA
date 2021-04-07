@@ -1,8 +1,8 @@
 from infrastructure_layer import infrastructure
-delete_all_users_URL = "https://github.com/theadamzaft/song-server-swagger/admin/delete_all_users"
-delete_all_songs_URL = "https://github.com/theadamzaft/song-server-swagger/admin/delete_all_songs"
-set_songs_URL = "https://github.com/theadamzaft/song-server-swagger//admin/set_songs"
-set_users_URL = "https://github.com/theadamzaft/song-server-swagger//admin/set_songs"
+delete_all_users_URL = "http://127.0.0.1:3002/admin/delete_all_users"
+delete_all_songs_URL = "http://127.0.0.1:3002/admin/delete_all_songs"
+set_songs_URL = "http://127.0.0.1:3002/admin/set_songs"
+set_users_URL = "http://127.0.0.1:3002/admin/set_songs"
 
 
 def deleteAllUsers():

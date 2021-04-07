@@ -1,10 +1,10 @@
 from infrastructure_layer import infrastructure
 
-add_song_URL = "https://github.com/theadamzaft/song-server-swagger/songs/add_song"
-upvote_URL = "https://github.com/theadamzaft/song-server-swagger/songs/upvote"
-downvote_URL = "https://github.com/theadamzaft/song-server-swagger/songs/downvote"
-ranked_songs_URL = "https://github.com/theadamzaft/song-server-swagger/songs/ranked_songs"
-get_song_URL = "https://github.com/theadamzaft/song-server-swagger/songs/get_song"
+add_song_URL = "http://127.0.0.1:3002/songs/add_song"
+upvote_URL = "http://127.0.0.1:3002/songs/upvote"
+downvote_URL = "http://127.0.0.1:3002/songs/downvote"
+ranked_songs_URL = "http://127.0.0.1:3002/songs/ranked_songs"
+get_song_URL = "http://127.0.0.1:3002/songs/get_song"
 
 def buildSong(genre, year, performer, title):
     song = {"song_genre" : genre,
@@ -59,3 +59,9 @@ def getSong(songTitle):
     answer = infrastructure.get(get_song_URL, data)
 
     return answer
+
+
+defaultSong = {"song_genre" : "A",
+                "song_year" : "1",
+                "song_performer" : "B",
+                "song_title" : "C"}

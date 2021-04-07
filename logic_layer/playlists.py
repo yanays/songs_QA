@@ -1,8 +1,8 @@
 from infrastructure_layer import infrastructure
 
-add_playlist_URL = "https://github.com/theadamzaft/song-server-swagger/users/add_playlist"
-add_song_URL = "https://github.com/theadamzaft/song-server-swagger/playlists/add_song"
-get_playlist_URL = "https://github.com/theadamzaft/song-server-swagger/users/get_playlist"
+add_playlist_URL = "http://127.0.0.1:3002/users/add_playlist"
+add_song_URL = "http://127.0.0.1:3002/playlists/add_song"
+get_playlist_URL = "http://127.0.0.1:3002/users/get_playlist"
 
 def buildPlaylist(userName, UserPassword, playlistName):
     playlist = {"user_name" : userName,

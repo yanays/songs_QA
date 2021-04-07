@@ -24,7 +24,10 @@ def Request(URL, rType='GET', data=None):
     if data==None:
         r = requests.request(rType, url=URL, headers=headers)
     else:
-        r = requests.request(rType, url=URL, data=json.dumps(data), headers=headers)
+        if rType == 'GET':
+            r = requests.request(rType, url=URL, params=data, headers=headers)
+        else:
+            r = requests.request(rType, url=URL, data=json.dumps(data), headers=headers)
 
     return r
 
