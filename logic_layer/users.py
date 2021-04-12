@@ -1,9 +1,5 @@
 from infrastructure_layer import infrastructure
-
-add_user_URL = "http://127.0.0.1:3002/users/add_user"
-get_user_URL = "http://127.0.0.1:3002/users/get_user"
-add_friend_URL = "http://127.0.0.1:3002/users/add_friend"
-change_password_URL ="http://127.0.0.1:3002/users/change_password"
+from logic_layer import logicconfig
 
 def buildUser(name, password):
     user = {"user_name" : name,
@@ -13,7 +9,7 @@ def buildUser(name, password):
 
 
 def postUser(user):
-    answer = infrastructure.post(add_user_URL, user)
+    answer = infrastructure.post(logicconfig.add_user_URL, user)
     return answer
 
 
@@ -25,7 +21,7 @@ def addUser(name, password):
 
 def getUser(name):
     data = {"user_name" : name}
-    answer = infrastructure.get(get_user_URL, data)
+    answer = infrastructure.get(logicconfig.get_user_URL, data)
     return answer
 
 
@@ -34,7 +30,7 @@ def addFriend(userName, password, friendName):
             "user_password" : password,
             "friend_name" : friendName}
 
-    answer = infrastructure.put(add_friend_URL, data)
+    answer = infrastructure.put(logicconfig.add_friend_URL, data)
 
     return answer
 
@@ -44,7 +40,7 @@ def changePassword(userName, userPassword, userNewPassword):
             "user_password" : userPassword,
             "user_new_password" : userNewPassword}
 
-    answer = infrastructure.put(change_password_URL, data)
+    answer = infrastructure.put(logicconfig.change_password_URL, data)
 
     return answer
 

@@ -1,5 +1,6 @@
 from logic_layer import users
 from logic_layer import admin
+from logic_layer import playlists
 import pytest
 
 def test_add_user(resetUsers):
@@ -38,5 +39,15 @@ def test_add_friend(oneUser):
 
 
 def test_change_password(oneUser):
+    answer = users.changePassword("yanay", "123", "777")
+    assert admin.checkAnswer(
+        answer), f"fail to change password. status: {answer.status_code}\nerror: {answer.json()['error']}"
+
+    answer = playlists.addPlaylist("yanay", "777", "myPlaylist")
+    assert admin.checkAnswer(
+        answer), f"fail to use new password. status: {answer.status_code}\nerror: {answer.json()['error']}"
 
 
+def test_encoded_password(oneUser):
+    dataBase = admin.getDB()
+    assert dataBase['yanay']['password']!="123", f"un-encoded password"

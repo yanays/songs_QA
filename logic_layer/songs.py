@@ -1,10 +1,5 @@
 from infrastructure_layer import infrastructure
-
-add_song_URL = "http://127.0.0.1:3002/songs/add_song"
-upvote_URL = "http://127.0.0.1:3002/songs/upvote"
-downvote_URL = "http://127.0.0.1:3002/songs/downvote"
-ranked_songs_URL = "http://127.0.0.1:3002/songs/ranked_songs"
-get_song_URL = "http://127.0.0.1:3002/songs/get_song"
+from logic_layer import logicconfig
 
 def buildSong(genre, year, performer, title):
     song = {"song_genre" : genre,
@@ -16,7 +11,7 @@ def buildSong(genre, year, performer, title):
 
 
 def postSong(song):
-    answer = infrastructure.post(add_song_URL, song)
+    answer = infrastructure.post(logicconfig.add_song_URL, song)
     return answer
 
 
@@ -37,12 +32,12 @@ def songVote(URL, userName, password, playlistName, songTitle):
 
 
 def songUpvote(userName, password, playlistName, songTitle):
-    answer = songVote(upvote_URL, userName, password, playlistName, songTitle)
+    answer = songVote(logicconfig.upvote_URL, userName, password, playlistName, songTitle)
     return answer
 
 
 def songDownvote(userName, password, playlistName, songTitle):
-    answer = songVote(downvote_URL, userName, password, playlistName, songTitle)
+    answer = songVote(logicconfig.downvote_URL, userName, password, playlistName, songTitle)
     return answer
 
 
@@ -50,13 +45,13 @@ def getSongByRank(rank, op):
     data = {"rank" : rank,
             "op" : op}
 
-    answer = infrastructure.get(ranked_songs_URL, data)
+    answer = infrastructure.get(logicconfig.ranked_songs_URL, data)
     return answer
 
 
 def getSong(songTitle):
     data = {"song_title" : songTitle}
-    answer = infrastructure.get(get_song_URL, data)
+    answer = infrastructure.get(logicconfig.get_song_URL, data)
 
     return answer
 

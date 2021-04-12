@@ -1,8 +1,5 @@
 from infrastructure_layer import infrastructure
-
-add_playlist_URL = "http://127.0.0.1:3002/users/add_playlist"
-add_song_URL = "http://127.0.0.1:3002/playlists/add_song"
-get_playlist_URL = "http://127.0.0.1:3002/users/get_playlist"
+from logic_layer import logicconfig
 
 def buildPlaylist(userName, userPassword, playlistName):
     playlist = {"user_name" : userName,
@@ -13,7 +10,7 @@ def buildPlaylist(userName, userPassword, playlistName):
 
 
 def postPlaylist(playlist):
-    answer = infrastructure.post(add_playlist_URL, playlist)
+    answer = infrastructure.post(logicconfig.add_playlist_URL, playlist)
     return answer
 
 
@@ -29,7 +26,7 @@ def addSongToPlaylist(userName, userPassword, playlistName, songTitle):
             "playlist_name" : playlistName,
             "song_title" : songTitle}
 
-    answer = infrastructure.post(add_song_URL, data)
+    answer = infrastructure.post(logicconfig.add_song_to_playlist_URL, data)
 
     return answer
 
@@ -39,7 +36,7 @@ def getPlaylist(userName, UserPassword, playlistName):
             "User_password" : UserPassword,
             "playlist_name" : playlistName}
 
-    answer = infrastructure(get_playlist_URL, data)
+    answer = infrastructure(logicconfig.get_playlist_URL, data)
 
     return answer
 
