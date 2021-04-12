@@ -37,3 +37,6 @@ def test_add_friend(oneUser):
     assert "error" in answer.json().keys(), "ERROR: add friend with wrong password"
 
 
+def test_change_password(oneUser):
+
+
