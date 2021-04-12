@@ -28,7 +28,7 @@ def addSong(genre, year, performer, title):
 
 def songVote(URL, userName, password, playlistName, songTitle):
     data = {"user_name" : userName,
-            "password" : password,
+            "user_password" : password,
             "playlist_name" : playlistName,
             "song_title" : songTitle}
 
@@ -59,6 +59,16 @@ def getSong(songTitle):
     answer = infrastructure.get(get_song_URL, data)
 
     return answer
+
+def assertGetByRank(answer, song, shouldAppear):
+    if "error" in answer.json().keys(): return False
+    if shouldAppear and song not in answer.json()["data"]:
+        answer.json()["error"] = "song not appear"
+        return False
+    if (not shouldAppear) and song in answer.json()["data"]:
+        answer.json()["error"] = "song appear while shouldn't"
+        return False
+    return True
 
 
 defaultSong = {"song_genre" : "A",

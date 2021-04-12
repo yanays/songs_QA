@@ -4,9 +4,9 @@ add_playlist_URL = "http://127.0.0.1:3002/users/add_playlist"
 add_song_URL = "http://127.0.0.1:3002/playlists/add_song"
 get_playlist_URL = "http://127.0.0.1:3002/users/get_playlist"
 
-def buildPlaylist(userName, UserPassword, playlistName):
+def buildPlaylist(userName, userPassword, playlistName):
     playlist = {"user_name" : userName,
-                "User_password" : UserPassword,
+                "user_password" : userPassword,
                 "playlist_name" : playlistName}
 
     return playlist
@@ -26,7 +26,7 @@ def addPlaylist(userName, UserPassword, playlistName):
 def addSongToPlaylist(userName, userPassword, playlistName, songTitle):
     data = {"user_name" : userName,
             "user_password" : userPassword,
-            "Playlist_name" : playlistName,
+            "playlist_name" : playlistName,
             "song_title" : songTitle}
 
     answer = infrastructure.post(add_song_URL, data)
@@ -42,3 +42,8 @@ def getPlaylist(userName, UserPassword, playlistName):
     answer = infrastructure(get_playlist_URL, data)
 
     return answer
+
+
+defaultPlaylist = {"user_name" : "yanay",
+                    "user_password" : "123",
+                    "playlist_name" : "myPlaylist"}

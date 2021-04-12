@@ -21,3 +21,9 @@ def setSongsIntoTheDB(songsList):
 def setUsersIntoTheDB(userObject):
     data = {"Object of user objects" : userObject}
     return infrastructure.post(set_users_URL, data)
+
+
+def checkAnswer(answer):
+    if not answer.status_code == 200: return False
+    if "error" in answer.json().keys(): return False
+    return True
